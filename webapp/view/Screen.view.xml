@@ -1,0 +1,89 @@
+<mvc:View controllerName="consultaprodutos.controller.Screen"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content>
+          <FlexBox justifyContent="Center">
+              <Input id="inpBusca"/>
+                <Button text="Buscar" press="onPressBuscar"/>
+                </FlexBox>
+      <VBox id="productBox" visible="true">
+        <ObjectHeader 
+          title="{ModeloProduto>/product/product_name}"
+          number="{ModeloProduto>/product/product_quantity}">
+          <attributes>
+            <ObjectAttribute title="Código de Barras" text="{ModeloProduto>/code}"/>
+            <ObjectAttribute title="{ModeloProduto>/product/brands}" text="Antartica" />
+          </attributes>
+      </ObjectHeader>
+
+      <Panel headerText="Informações">
+        <content>
+          <HBox>
+            <Image src="{ModeloProduto>/product/image_front_url}" width="10em" press="onClickImage" />
+              <VBox>
+                <ObjectAttribute title= "Categoria" text="{ModeloProduto>/product/categories}" />
+                <ObjectAttribute title= "Países"    text="{ModeloProduto>/product/countries}" />  
+                <ObjectAttribute title= "Tags" text="{ModeloProduto>/product/photographers_tags}" />  
+              </VBox>
+          </HBox>
+        </content>
+        
+
+      </Panel>
+
+      <Panel headerText="Ingredientes">
+        <content>
+          <HBox>
+            <Image src="{ModeloProduto>/product/image_ingredients_url}" width="10em" press="onClickImage" />
+              <Table items="{ModeloProduto>/product/ingredients}" >
+                <columns>
+                  <Column >
+                    <Text text="Descrição" />
+                  </Column>
+                  <Column >
+                    <Text text="Percentual" />
+                  </Column>
+                  <Column >
+                    <Text text="Porcentagem Estimada" />
+                  </Column>
+                  <Column >
+                    <Text text="Porcentagem Mínima" />
+                  </Column>
+                  <Column >
+                    <Text text="Porcentagem Máxima" />
+                  </Column>
+                  <Column >
+                    <Text text="Vegano" />
+                  </Column>
+                  <Column >
+                    <Text text="Vegetariano" />
+                  </Column>
+                </columns>
+                  <items>
+                    <ColumnListItem>
+                      <cells>
+                        <Text text="{ModeloProduto>text}"/>
+                        <Text text="{ModeloProduto>percent}"/>
+                        <Text text="{ModeloProduto>percent_estimate}"/>
+                        <Text text="{ModeloProduto>percent_max}"/>
+                        <Text text="{ModeloProduto>text_percent_min}"/>
+                        <Text text="{ModeloProduto>vegan}"/>
+                        <Text text="{ModeloProduto>vegetarian}"/>
+                      </cells>
+                    </ColumnListItem>
+                  </items>
+              
+
+              </Table>
+          </HBox>
+        </content>
+        
+
+      </Panel>
+    
+      </VBox>
+
+        </content>
+    </Page>
+</mvc:View>
